@@ -11,7 +11,30 @@ class ListItem extends React.Component {
             qty: 1,
         }
         // this.increaseQuantity = this.increaseQuantity.bind(this);
+        // this.testing();
     }
+
+    // testing(){
+    //     let promise = new Promise((resolve, reject) => {
+    //         setTimeout(()=> {
+    //             resolve('done');
+    //         }, 5000);
+    //     });
+
+    //     promise.then(() => {
+    //         this.setState({
+    //             qty: this.state.qty + 10,
+    //         });
+    //         this.setState({
+    //             qty: this.state.qty + 10,
+    //         });
+    //         this.setState({
+    //             qty: this.state.qty + 20,
+    //         });
+
+    //         console.log(this.state);
+    //     });
+    // }
 
     increaseQuantity = () => {
         // console.log(this.state.qty += 1);
@@ -24,14 +47,19 @@ class ListItem extends React.Component {
             return {
                 qty: prevQty.qty+1,
             }
-        })
+        }, () => {
+            console.log(this.state);
+        });
+
+        
     }
 
     decreaseQuantity = () => {
+        const {qty} = this.state;
+        if(qty <= 0){
+            return;
+        }
         this.setState((prevState) => {
-            if(prevState.qty == 0){
-                return;
-            }
             return {
                 qty: prevState.qty-1,
             }
@@ -40,7 +68,7 @@ class ListItem extends React.Component {
 
 
     render(){
-
+        // console.log('render');
         const {price, title, qty} = this.state;
 
         return (
