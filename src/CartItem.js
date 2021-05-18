@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 
-class ListItem extends React.Component {
+class CartItem extends React.Component {
 
     constructor(){
         super();
@@ -25,12 +25,12 @@ class ListItem extends React.Component {
     //         this.setState({
     //             qty: this.state.qty + 10,
     //         });
-    //         this.setState({
-    //             qty: this.state.qty + 10,
-    //         });
-    //         this.setState({
-    //             qty: this.state.qty + 20,
-    //         });
+    //         // this.setState({
+    //         //     qty: this.state.qty + 10,
+    //         // });
+    //         // this.setState({
+    //         //     qty: this.state.qty + 20,
+    //         // });
 
     //         console.log(this.state);
     //     });
@@ -115,4 +115,4 @@ let styles = {
     }
 }
 
-export default ListItem;
+export default CartItem;
