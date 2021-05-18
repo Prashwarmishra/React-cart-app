@@ -3,73 +3,9 @@ import './App.css';
 
 class CartItem extends React.Component {
 
-    constructor(){
-        super();
-        this.state = {
-            price: '20,000',
-            title: 'Mobile Phone',
-            qty: 1,
-        }
-        // this.increaseQuantity = this.increaseQuantity.bind(this);
-        // this.testing();
-    }
-
-    // testing(){
-    //     let promise = new Promise((resolve, reject) => {
-    //         setTimeout(()=> {
-    //             resolve('done');
-    //         }, 5000);
-    //     });
-
-    //     promise.then(() => {
-    //         this.setState({
-    //             qty: this.state.qty + 10,
-    //         });
-    //         // this.setState({
-    //         //     qty: this.state.qty + 10,
-    //         // });
-    //         // this.setState({
-    //         //     qty: this.state.qty + 20,
-    //         // });
-
-    //         console.log(this.state);
-    //     });
-    // }
-
-    increaseQuantity = () => {
-        // console.log(this.state.qty += 1);
-
-        // this.setState({
-        //     qty: this.state.qty+1,
-        // });
-
-        this.setState((prevQty) => {
-            return {
-                qty: prevQty.qty+1,
-            }
-        }, () => {
-            console.log(this.state);
-        });
-
-        
-    }
-
-    decreaseQuantity = () => {
-        const {qty} = this.state;
-        if(qty <= 0){
-            return;
-        }
-        this.setState((prevState) => {
-            return {
-                qty: prevState.qty-1,
-            }
-        });
-    }
-
-
     render(){
         // console.log('render');
-        const {price, title, qty} = this.state;
+        const {price, title, qty} = this.props.product;
 
         return (
             <div className = 'cart-item'>
