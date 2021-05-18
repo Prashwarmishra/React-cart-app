@@ -4,7 +4,7 @@ import './App.css';
 class CartItem extends React.Component {
 
     render(){
-        // console.log('render');
+        // console.log(this.props);
         const {price, title, qty} = this.props.product;
 
         return (
@@ -22,13 +22,13 @@ class CartItem extends React.Component {
                             className="action-icons" 
                             src="https://image.flaticon.com/icons/svg/992/992651.svg"
                             // onClick = {this.increaseQuantity.bind(this)}
-                            onClick = {this.increaseQuantity} 
+                            onClick = {() => {this.props.onQuantityIncrease(this.props.product)}} 
                         />
                         <img 
                             alt="decrease" 
                             className="action-icons" 
                             src="https://image.flaticon.com/icons/svg/1665/1665612.svg" 
-                            onClick = {this.decreaseQuantity}
+                            onClick = {() => {this.props.onQuantityDecrease(this.props.product)}}
                         />
                         <img 
                             alt="delete" 
