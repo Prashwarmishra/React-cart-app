@@ -11,11 +11,11 @@ class App extends React.Component {
       products: [],
       loading: true,
     }
+    this.db = firebase.firestore();
   }
 
   componentDidMount(){
-    firebase
-      .firestore()
+    this.db
       .collection('products')
       .onSnapshot((snapshot) => {
         const items = snapshot.docs.map((doc) => {
@@ -88,11 +88,26 @@ class App extends React.Component {
     return total;
   }
 
+  addProduct = () => {
+    this.db
+      .collection('products')
+      .add({
+        qty: 1,
+        img: 'https://images.unsplash.com/photo-1526045431048-f857369baa09?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80',
+        title: 'watch',
+        price: 6000
+      })
+      .then((dataRef) => {
+        console.log(dataRef);
+      });
+  }
+
   render(){
     const {products, loading} = this.state;
     return (
       <div className = 'App'>
         <Navbar count = {this.getCartCount()}/>
+        <button onClick = {this.addProduct}>Add Product</button>
         <Cart 
           products = {products}
           onQuantityIncrease = {this.handleIncreasedQuantity}
